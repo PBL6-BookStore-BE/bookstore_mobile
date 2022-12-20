@@ -1,4 +1,6 @@
 import 'package:books_app/users/authentication/login_screen.dart';
+import 'package:books_app/users/fragments/dashboard_of_fragments.dart';
+import 'package:books_app/users/userPreferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -20,9 +22,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: FutureBuilder(
-        builder: (context,dataSnapShot)
+        future: RememberUserPrefs.readUserInfo(),
+        builder: (context, dataSnapShot)
         {
-          return LoginScreen();
+          if(dataSnapShot.data == null)
+          {
+            return LoginScreen();
+          }
+          else
+          {
+            return DashboardOfFragments();
+          }
         },
       ),
     );
