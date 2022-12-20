@@ -4,12 +4,13 @@
 
 import 'dart:convert';
 
+import 'package:books_app/users/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RememberUserPrefs
 {
   //save-remember User-info
-  static Future<void> saveRememberUser(String username, String email) async
+  static Future<void> storeUserInfo(String username, String email) async
   {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String userJsonData =
@@ -19,5 +20,19 @@ class RememberUserPrefs
         });
 
     await preferences.setString("currentUser", userJsonData);
+  }
+
+  //get-read User-info
+  static Future<User?> readUserInfo() async
+  {
+    User? currentUserInfo;
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? userInfo = preferences.getString("currentUser");
+    if(userInfo != null)
+    {
+      Map<String, dynamic> userDataMap = jsonDecode(userInfo);
+      currentUserInfo = User.fromJson(userDataMap);
+    }
+    return currentUserInfo;
   }
 }

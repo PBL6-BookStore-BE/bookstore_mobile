@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen>
           String username = resBodyOfLogin["userName"].toString();
 
           //save userInfo to local Storage using Shared Prefrences
-          await RememberUserPrefs.saveRememberUser(username, email);
+          await RememberUserPrefs.storeUserInfo(username, email);
 
           Future.delayed(Duration(milliseconds: 2000), ()
           {
