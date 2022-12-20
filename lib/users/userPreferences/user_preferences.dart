@@ -3,6 +3,7 @@
 
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:books_app/users/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,7 +33,14 @@ class RememberUserPrefs
     {
       Map<String, dynamic> userDataMap = jsonDecode(userInfo);
       currentUserInfo = User.fromJson(userDataMap);
+
     }
     return currentUserInfo;
+  }
+
+  static Future<void> removeUserInfo() async
+  {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.remove("currentUser");
   }
 }
