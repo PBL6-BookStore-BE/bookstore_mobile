@@ -4,4 +4,7 @@ class API
 
   static const login = "login";
   static const loginUrl = "$mainUrl$login";
+
+  static const register = "register";
+  static const registerUrl = "$mainUrl/register";
 }
