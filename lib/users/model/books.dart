@@ -52,7 +52,7 @@ class Books {
     categoryName = json['categoryName'];
     publisherName = json['publisherName'];
     publicationDate = json['publicationDate'];
-    authors = json['authors'].cast<String>();
+    authors = json['authors'].toString().split(", ");
     urls = json['urls'].cast<String>();
     description = json['description'];
     urlFolder = json['urlFolder'];
