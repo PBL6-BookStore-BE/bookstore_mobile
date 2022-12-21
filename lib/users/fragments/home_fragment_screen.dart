@@ -14,37 +14,6 @@ class HomeFragmentScreen extends StatelessWidget {
 
   Future<List<Books>> getTrendingBookItems() async
   {
-    List<Books> allBookItemsList = [];
-    try
-    {
-      var res = await http.get(
-          Uri.parse("https://localhost:7075/gateway/books")
-      );
-
-      if(res.statusCode == 200)
-      {
-        var responseBodyOfTrending = jsonDecode(res.body);
-        (responseBodyOfTrending as List).forEach((eachRecord)
-        {
-          allBookItemsList.add(Books.fromJson(eachRecord));
-        });
-
-      }
-      else
-      {
-        Fluttertoast.showToast(msg: "Error, status code is not 200");
-      }
-    }
-    catch(errorMsg)
-    {
-      print("Error:: " + errorMsg.toString());
-    }
-
-    return allBookItemsList;
-  }
-
-  Future<List<Books>> getAllBookItems() async
-  {
     List<Books> trendingBookItemsList = [];
     try
     {
@@ -55,7 +24,6 @@ class HomeFragmentScreen extends StatelessWidget {
       if(res.statusCode == 200)
       {
         var responseBodyOfTrending = jsonDecode(res.body);
-        // print(responseBodyOfTrending);
         (responseBodyOfTrending as List).forEach((eachRecord)
         {
           trendingBookItemsList.add(Books.fromJson(eachRecord));
@@ -73,6 +41,38 @@ class HomeFragmentScreen extends StatelessWidget {
     }
 
     return trendingBookItemsList;
+  }
+
+  Future<List<Books>> getAllBookItems() async
+  {
+    List<Books> allBookItemsList = [];
+    try
+    {
+      var res = await http.get(
+          Uri.parse("https://localhost:7075/gateway/books")
+      );
+
+      if(res.statusCode == 200)
+      {
+        var responseBodyOfTrending = jsonDecode(res.body);
+        // print(responseBodyOfTrending);
+        (responseBodyOfTrending as List).forEach((eachRecord)
+        {
+          allBookItemsList.add(Books.fromJson(eachRecord));
+        });
+
+      }
+      else
+      {
+        Fluttertoast.showToast(msg: "Error, status code is not 200");
+      }
+    }
+    catch(errorMsg)
+    {
+      print("Error:: " + errorMsg.toString());
+    }
+
+    return allBookItemsList;
   }
 
 
