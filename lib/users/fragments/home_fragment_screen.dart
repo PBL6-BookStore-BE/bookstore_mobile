@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:books_app/users/item/item_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../model/books.dart';
 import 'package:flutter/src/material/colors.dart';
@@ -209,7 +211,7 @@ class HomeFragmentScreen extends StatelessWidget {
                 return GestureDetector(
                   onTap: ()
                   {
-
+                    Get.to(ItemDetailsScreen(itemInfo: eachBookItemData));
                   },
                   child: Container(
                     width: 200,
@@ -385,7 +387,7 @@ class HomeFragmentScreen extends StatelessWidget {
                 return GestureDetector(
                   onTap: ()
                   {
-
+                    Get.to(ItemDetailsScreen(itemInfo: eachBookItemRecord));
                   },
                   child: Container(
                     margin: EdgeInsets.fromLTRB(
