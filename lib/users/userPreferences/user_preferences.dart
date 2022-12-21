@@ -11,14 +11,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class RememberUserPrefs
 {
   //save-remember User-info
-  static Future<void> storeUserInfo(String username, String email) async
+  static Future<void> storeUserInfo(String username, String email, String password) async
   {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String userJsonData =
-        jsonEncode({
-          "email" : email,
-          "username" : username
-        });
+    jsonEncode({
+      "username" : username,
+      "email" : email,
+      "password" : password
+    });
 
     await preferences.setString("currentUser", userJsonData);
   }

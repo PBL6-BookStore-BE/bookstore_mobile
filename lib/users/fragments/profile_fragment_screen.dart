@@ -69,12 +69,12 @@ class ProfileFragmentScreen extends StatelessWidget
     }
   }
 
-  String? userName = "";
-  getUser() async
-  {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    userName = (prefs.getString('currentUser')!! ?? "");
-  }
+  // String? userName = "";
+  // getUser() async
+  // {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   userName = (prefs.getString('currentUser')!! ?? "");
+  // }
   Widget userInfoItemProfile(IconData iconData, String userData)
   {
     return Container(
@@ -107,7 +107,7 @@ class ProfileFragmentScreen extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    getUser();
+    // getUser();
     return ListView(
       padding: const EdgeInsets.all(32),
       children: [
@@ -121,11 +121,11 @@ class ProfileFragmentScreen extends StatelessWidget
         
         const SizedBox(height: 20,),
 
-        userInfoItemProfile(Icons.person, _currentUser.user.user_username),
+        userInfoItemProfile(Icons.person, _currentUser.user.username),
 
         const SizedBox(height: 20,),
 
-        userInfoItemProfile(Icons.email, _currentUser.user.user_email),
+        userInfoItemProfile(Icons.email, _currentUser.user.email),
 
         const SizedBox(height: 20,),
 
