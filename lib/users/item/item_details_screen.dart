@@ -1,6 +1,8 @@
+import 'package:books_app/users/controllers/item_details_controller.dart';
 import 'package:books_app/users/model/books.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
@@ -11,11 +13,14 @@ class ItemDetailsScreen extends StatefulWidget {
   State<ItemDetailsScreen> createState() => _ItemDetailsScreenState();
 }
 
-class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
+class _ItemDetailsScreenState extends State<ItemDetailsScreen>
+{
+  final itemDetailsController = Get.put(ItemDetailsController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
 
@@ -106,7 +111,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
               // category
               //author
               //price
-              //item counter
+              //quantity item counter
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -193,10 +198,95 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     ),
                   ),
 
-                  //item counter
-
+                  //quantity item counter
+                  Obx(
+                          () => Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          //+
+                          IconButton(
+                            onPressed: ()
+                            {
+                              itemDetailsController.setQuantityItem(itemDetailsController.quantity + 1);
+                            },
+                            icon: const Icon(Icons.add_circle_outline, color: Colors.white),
+                          ),
+                          Text(
+                              itemDetailsController.quantity.toString(),
+                              style: const TextStyle(
+                                fontSize: 20,
+                                color: Colors.purpleAccent,
+                                fontWeight: FontWeight.bold,
+                              )
+                          ),
+                          //-
+                          IconButton(
+                            onPressed: ()
+                            {
+                              if (itemDetailsController.quantity - 1 >= 1)
+                              {
+                                itemDetailsController.setQuantityItem(itemDetailsController.quantity - 1);
+                              }
+                              else
+                              {
+                                Fluttertoast.showToast(msg: "Quantity must be 1 or greater than 1");
+                              }
+                            },
+                            icon: const Icon(Icons.remove_circle_outline, color: Colors.white),
+                          ),
+                        ],
+                      )
+                  ),
                 ],
               ),
+
+              //description
+              const Text(
+                "Description:",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.purpleAccent,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8,),
+              Text(
+                widget.itemInfo!.description!,
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+
+              const SizedBox(height: 30,),
+
+              //add to cart button
+              Material(
+                elevation: 4,
+                color: Colors.purpleAccent,
+                borderRadius: BorderRadius.circular(10),
+                child: InkWell(
+                  onTap: ()
+                  {
+
+                  },
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container (
+                    alignment: Alignment.center,
+                    height: 50,
+                    child: const Text(
+                      "Add to cart",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                )
+              ),
+
+              const SizedBox(height: 30,),
+
             ],
         ),
       ),
