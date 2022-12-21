@@ -45,11 +45,11 @@ class HomeFragmentScreen extends StatelessWidget {
 
   Future<List<Books>> getAllBookItems() async
   {
-    List<Books> trendingBookItemsList = [];
+    List<Books> allBookItemsList = [];
     try
     {
       var res = await http.get(
-          Uri.parse("https://localhost:7075/gateway/topbook")
+          Uri.parse("https://localhost:7075/gateway/books")
       );
 
       if(res.statusCode == 200)
@@ -58,7 +58,7 @@ class HomeFragmentScreen extends StatelessWidget {
         // print(responseBodyOfTrending);
         (responseBodyOfTrending as List).forEach((eachRecord)
         {
-          trendingBookItemsList.add(Books.fromJson(eachRecord));
+          allBookItemsList.add(Books.fromJson(eachRecord));
         });
 
       }
@@ -72,7 +72,7 @@ class HomeFragmentScreen extends StatelessWidget {
       print("Error:: " + errorMsg.toString());
     }
 
-    return trendingBookItemsList;
+    return allBookItemsList;
   }
 
 
