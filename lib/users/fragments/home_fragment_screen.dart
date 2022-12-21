@@ -67,19 +67,19 @@ class HomeFragmentScreen extends StatelessWidget {
               fontSize:24,
             ),),
           ),
-
+          trendingMostPopularBookItemWidget(context),
           const SizedBox(height:24,),
           //new items
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 18),
-            child: Text("New Books",
+            child: Text("New Collections",
               style: TextStyle(
                 color: Colors.purpleAccent,
                 fontWeight: FontWeight.bold,
                 fontSize:24,
               ),),
           ),
-          trendingMostPopularBookItemWidget(context),
+
         ],
       )
 
