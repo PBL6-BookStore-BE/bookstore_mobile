@@ -57,7 +57,7 @@ class DashboardOfFragments extends StatelessWidget
       builder: (controller)
       {
         return Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: Obx(
                     ()=> _fragmentScreens[_indexNumber.value]
@@ -78,7 +78,7 @@ class DashboardOfFragments extends StatelessWidget
               {
                 var navBtnProperty = _navigationButtonsProperties[index];
                 return BottomNavigationBarItem(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.purple,
                   icon: Icon(navBtnProperty["non_active_icon"]),
                   activeIcon: Icon(navBtnProperty["active_icon"]),
                   label: navBtnProperty["label"],
