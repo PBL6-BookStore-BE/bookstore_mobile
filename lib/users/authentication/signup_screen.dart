@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                     width: MediaQuery.of(context).size.width,
                     height: 285,
                     child: Image.asset(
-                      "images/register.jpg",
+                      "images/login5.png",
                     ),
                   ),
                   //signup form
@@ -110,8 +110,8 @@ class _SignUpScreenState extends State<SignUpScreen>
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0,-3),
+                            color: Colors.purpleAccent,
+                            offset: Offset(0,-4),
 
                           )
                         ],
@@ -482,7 +482,8 @@ class _SignUpScreenState extends State<SignUpScreen>
                                   child: const Text(
                                     "Login Here",
                                     style: TextStyle(
-                                      color: Colors.pinkAccent,
+                                        color: Colors.deepPurple,
+                                        fontWeight: FontWeight.bold
                                     ),
                                   ),
 

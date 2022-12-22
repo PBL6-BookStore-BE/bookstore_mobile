@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen>
                     width: MediaQuery.of(context).size.width,
                     height: 285,
                     child: Image.asset(
-                      "images/login.jpg",
+                      "images/login4.png",
                     ),
                   ),
                   //login form
@@ -112,8 +112,8 @@ class _LoginScreenState extends State<LoginScreen>
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0,-3),
+                            color: Colors.purpleAccent,
+                            offset: Offset(0,-4),
 
                           )
                         ],
@@ -287,7 +287,8 @@ class _LoginScreenState extends State<LoginScreen>
                                   child: const Text(
                                     "SignUp Here",
                                     style: TextStyle(
-                                      color: Colors.pinkAccent,
+                                      color: Colors.deepPurple,
+                                        fontWeight: FontWeight.bold
                                     ),
                                   ),
 
