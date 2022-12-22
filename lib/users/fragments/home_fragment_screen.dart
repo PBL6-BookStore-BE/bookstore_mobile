@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import '../item/search_items.dart';
 import '../model/books.dart';
 import 'package:flutter/src/material/colors.dart';
 
@@ -128,13 +129,13 @@ class HomeFragmentScreen extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal:18),
         child: TextField(
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
             controller: searchController,
             decoration: InputDecoration(
               prefixIcon: IconButton(
                   onPressed: ()
                   {
-
+                    Get.to(SearchItems(typedKeyWords: searchController.text));
                   },
                   icon: const Icon(
                       Icons.search,
