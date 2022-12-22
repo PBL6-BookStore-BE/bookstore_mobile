@@ -1,9 +1,16 @@
+import 'dart:convert';
+
 import 'package:books_app/users/controllers/item_details_controller.dart';
 import 'package:books_app/users/model/books.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import '../../api_connection/api_connection.dart';
+import '../userPreferences/current_user.dart';
+import '../userPreferences/user_preferences.dart';
+import '../fragments/dashboard_of_fragments.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
   final Books? itemInfo;
@@ -16,7 +23,40 @@ class ItemDetailsScreen extends StatefulWidget {
 class _ItemDetailsScreenState extends State<ItemDetailsScreen>
 {
   final itemDetailsController = Get.put(ItemDetailsController());
+  final CurrentUser _currentUser = Get.put(CurrentUser());
+  addItemToCart() async
+  {
+    try
+    {
+      String token = _currentUser.user.token;
+      var res = await http.post(
+          Uri.parse("https://localhost:7075/gateway/details"),
+          body: jsonEncode({
+            "quantity" : itemDetailsController.quantity,
+            "idBook" : widget.itemInfo!.id
+          }),
+          headers: {
+            "Accept": "application/json",
+            "content-type":"application/json",
+            'Authorization': 'Bearer $token',
+          }
 
+      );
+
+      if (res.statusCode == 200) {
+        var resBodyOfAddCartDetail = jsonDecode(res.body);
+        Fluttertoast.showToast(msg: "book added to cart successfully.");
+      }
+      else
+        {
+          Fluttertoast.showToast(msg: "Error occurred.\nPlease try again.");
+        }
+    }
+    catch(e)
+    {
+      print("Error :: " + e.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -268,7 +308,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen>
                 child: InkWell(
                   onTap: ()
                   {
-
+                      addItemToCart();
                   },
                   borderRadius: BorderRadius.circular(10),
                   child: Container (

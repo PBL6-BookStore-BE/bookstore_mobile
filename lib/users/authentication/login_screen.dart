@@ -13,7 +13,6 @@ import '../userPreferences/user_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
 
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -52,8 +51,9 @@ class _LoginScreenState extends State<LoginScreen>
           String email = resBodyOfLogin["email"].toString();
           String username = resBodyOfLogin["userName"].toString();
           String password = resBodyOfLogin["password"].toString();
+          String token = resBodyOfLogin["token"].toString();
           //save userInfo to local Storage using Shared Prefrences
-          await RememberUserPrefs.storeUserInfo(username, email, password);
+          await RememberUserPrefs.storeUserInfo(username, email, password,token);
 
           Future.delayed(Duration(milliseconds: 2000), ()
           {
