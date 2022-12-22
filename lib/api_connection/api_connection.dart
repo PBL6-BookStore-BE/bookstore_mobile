@@ -7,4 +7,7 @@ class API
 
   static const register = "register";
   static const registerUrl = "$mainUrl/register";
+
+  static const cartDetail = "cartDetail";
+  static const cartDetailUrl = "$mainUrl/cartDetail";
 }
