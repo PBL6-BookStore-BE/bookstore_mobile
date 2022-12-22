@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:books_app/users/cart/cart_list_screen.dart';
+import 'package:books_app/users/controllers/cart_list_controller.dart';
 import 'package:books_app/users/item/item_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -146,7 +148,9 @@ class HomeFragmentScreen extends StatelessWidget {
                 fontSize: 12,
               ),
               suffixIcon: IconButton(
-                onPressed: (){},
+                onPressed: (){
+                  Get.to(CartListScreen());
+                },
                 icon: const Icon(
                   Icons.shopping_cart,
                   color: Colors.purpleAccent,
