@@ -33,7 +33,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen>
           Uri.parse("https://localhost:7075/gateway/details"),
           body: jsonEncode({
             "quantity" : itemDetailsController.quantity,
-            "id" : widget.itemInfo!.id
+            "idBook" : widget.itemInfo!.id
           }),
           headers: {
             "Accept": "application/json",

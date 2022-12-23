@@ -130,7 +130,7 @@ class _CartListScreenState extends State<CartListScreen> {
           Uri.parse("https://localhost:7075/gateway/cart/byid"),
           body:
           jsonEncode({
-            "id": cartID.toString(),
+            "idBook": cartID.toString(),
             "quantity": newQuantity.toString(),
           }),
           headers: {
