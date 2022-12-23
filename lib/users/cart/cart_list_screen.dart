@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:books_app/users/model/books.dart';
+import 'package:books_app/users/order/order_now_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -157,6 +158,35 @@ class _CartListScreenState extends State<CartListScreen> {
       Fluttertoast.showToast(msg: "Error: " + errorMessage.toString());
     }
   }
+
+  List<Map<String, dynamic>> getSelectedCartListItemsInformation(){
+    List<Map<String, dynamic>> selectedCartListItemsInformation = [];
+
+    if(cartListController.selectedItemList.length > 0)
+    {
+      cartListController.cartList.forEach((selectedCartListItem)
+      {
+        if(cartListController.selectedItemList.contains(selectedCartListItem.id))
+        {
+          Map<String, dynamic> itemInformation =
+          {
+            "idBook": selectedCartListItem.bookVM!.id,
+            'quantity': selectedCartListItem.quantity,
+            "id": selectedCartListItem.id,
+            "name": selectedCartListItem.bookVM!.name,
+            'image': selectedCartListItem.bookVM!.urls!.first,
+            'authors': selectedCartListItem.bookVM!.authors,
+            'totalAmount': selectedCartListItem.bookVM!.price! * selectedCartListItem.quantity!,
+            'price': selectedCartListItem.bookVM!.price!,
+          };
+          selectedCartListItemsInformation.add(itemInformation);
+        }
+      });
+    }
+    return selectedCartListItemsInformation;
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -585,7 +615,13 @@ class _CartListScreenState extends State<CartListScreen> {
                   child: InkWell(
                     onTap: ()
                     {
-
+                      cartListController.selectedItemList.length > 0
+                          ? Get.to(OrderNowScreen(
+                              selectedCartListItemsInfo: getSelectedCartListItemsInformation(),
+                              totalAmount: cartListController.total,
+                              selectedCartIDs: cartListController.selectedItemList,
+                            ))
+                          : null;
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(
