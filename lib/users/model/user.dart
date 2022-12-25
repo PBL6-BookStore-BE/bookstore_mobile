@@ -4,18 +4,21 @@ class User
   String password;
   String username;
   String token;
+  String id;
 
   User(
       this.username,
       this.email,
       this.password,
-      this.token
+      this.token,
+      this.id
       );
   factory User.fromJson(Map<String, dynamic> json) => User(
     json["username"],
     json["email"],
     json["password"],
-    json["token"]
+    json["token"],
+    json["id"]
   );
 
 
@@ -26,6 +29,6 @@ class User
         'email':email,
         'password':password,
         'token':token,
-
+        'id': id,
       };
 }

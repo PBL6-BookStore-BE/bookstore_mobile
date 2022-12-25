@@ -47,6 +47,61 @@ class Order {
   }
 }
 
+class OrderDisplay {
+  int? id;
+  bool? status;
+  String? idUser;
+  String? createdDate;
+  String? orderAddress;
+  String? payment;
+  String? receiverName;
+  String? number;
+  String? total;
+  List<dynamic>? orderDetails;
+
+
+  OrderDisplay({
+    this.id,
+    this.idUser,
+    this.createdDate,
+    this.status,
+    this.payment,
+    this.orderAddress,
+    this.receiverName,
+    this.number,
+    this.total,
+    this.orderDetails
+  });
+
+  factory OrderDisplay.fromJson(Map<String, dynamic> json) => OrderDisplay(
+    id: json["id"],
+    idUser: json["idUser"],
+    createdDate: json["createdDate"],
+    status: json["status"],
+    payment: json["payment"],
+    orderAddress: json["orderAddress"],
+    receiverName: json["receiverName"],
+    number: json["number"],
+    total: json["total"],
+    orderDetails: json["orderDetails"]
+  );
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['idUser'] = this.idUser;
+    data['createdDate'] = this.createdDate;
+    data['status'] = this.status;
+    data['payment'] = this.payment;
+    data['orderAddress'] = this.orderAddress;
+    data['receiverName'] = this.receiverName;
+    data['number'] = this.number;
+    data['total'] = this.total;
+    data['orderDetails'] = this.orderDetails;
+    return data;
+  }
+}
+
 class OrderDetails {
   int? idBook;
   int? quantity;
