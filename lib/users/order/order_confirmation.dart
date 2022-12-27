@@ -172,18 +172,18 @@ class OrderConfirmationScreen extends StatelessWidget {
         children: [
 
           //image
-          Image.asset(
-            "images/transaction.png",
-            width: 160,
-          ),
-
-          const SizedBox(height: 4,),
+          // Image.asset(
+          //   "images/transaction.png",
+          //   width: 160,
+          // ),
+          //
+          // const SizedBox(height: 4,),
 
           //title
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Please Attach Transaction \nProof Screenshot / Image",
+              "Please Confirm Your Order!!!",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white70,
@@ -193,67 +193,68 @@ class OrderConfirmationScreen extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 30),
-
-          //select image btn
-          Material(
-            elevation: 8,
-            color: Colors.purpleAccent,
-            borderRadius: BorderRadius.circular(30),
-            child: InkWell(
-              onTap: ()
-              {
-                chooseImageFromGallery();
-              },
-              borderRadius: BorderRadius.circular(30),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 12,
-                ),
-                child: Text(
-                  "Select Image",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
-          //display selected image by user
-          Obx(()=> ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width * 0.7,
-              maxHeight: MediaQuery.of(context).size.width * 0.6,
-            ),
-            child: imageSelectedByte.length > 0
-                ? Image.memory(imageSelectedByte, fit: BoxFit.contain,)
-                : const Placeholder(color: Colors.white60,),
-          )),
+          // const SizedBox(height: 30),
+          //
+          // //select image btn
+          // Material(
+          //   elevation: 8,
+          //   color: Colors.purpleAccent,
+          //   borderRadius: BorderRadius.circular(30),
+          //   child: InkWell(
+          //     onTap: ()
+          //     {
+          //       chooseImageFromGallery();
+          //     },
+          //     borderRadius: BorderRadius.circular(30),
+          //     child: const Padding(
+          //       padding: EdgeInsets.symmetric(
+          //         horizontal: 30,
+          //         vertical: 12,
+          //       ),
+          //       child: Text(
+          //         "Select Image",
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //           fontSize: 16,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          //
+          // const SizedBox(height: 16),
+          //
+          // //display selected image by user
+          // Obx(()=> ConstrainedBox(
+          //   constraints: BoxConstraints(
+          //     maxWidth: MediaQuery.of(context).size.width * 0.7,
+          //     maxHeight: MediaQuery.of(context).size.width * 0.6,
+          //   ),
+          //   child: imageSelectedByte.length > 0
+          //       ? Image.memory(imageSelectedByte, fit: BoxFit.contain,)
+          //       : const Placeholder(color: Colors.white60,),
+          // )),
 
           const SizedBox(height: 16),
 
           //confirm and proceed
           Obx(()=> Material(
             elevation: 8,
-            color: imageSelectedByte.length > 0 ? Colors.purpleAccent : Colors.grey,
+            color: imageSelectedByte.length < 0 ? Colors.grey : Colors.purpleAccent,
             borderRadius: BorderRadius.circular(30),
             child: InkWell(
               onTap: ()
               {
-                if(imageSelectedByte.length > 0)
-                {
-                  //save order info
-                  saveNewOrderInfo();
-                }
-                else
-                {
-                  Fluttertoast.showToast(msg: "Please attach the transaction proof / screenshot.");
-                }
+                saveNewOrderInfo();
+                // if(imageSelectedByte.length > 0)
+                // {
+                //   //save order info
+                //   saveNewOrderInfo();
+                // }
+                // else
+                // {
+                //   Fluttertoast.showToast(msg: "Please attach the transaction proof / screenshot.");
+                // }
               },
               borderRadius: BorderRadius.circular(30),
               child: const Padding(
