@@ -84,6 +84,11 @@ class OrderFragmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: const Text(
+                "Order")
+        ),
       backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,7 +252,7 @@ class OrderFragmentScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Amount: \$" + eachOrderData.total.toString(),
+                          "Amount: \$" +  (double.parse(eachOrderData.total.toString()).toStringAsFixed(2)).toString() ,
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.purpleAccent,

@@ -7,9 +7,14 @@ class FavoritesFragmentScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: const Text(
+              "Wish List")
+      ),
       body: Center(
         child: Text(
-            "Favorites Fragment Screen"
+            "Go back to shopping!!"
         ),
       ),
     );

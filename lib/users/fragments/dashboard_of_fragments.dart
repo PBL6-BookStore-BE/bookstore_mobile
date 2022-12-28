@@ -78,6 +78,8 @@ class DashboardOfFragments extends StatelessWidget
               {
                 var navBtnProperty = _navigationButtonsProperties[index];
                 return BottomNavigationBarItem(
+
+
                   backgroundColor: Colors.purple,
                   icon: Icon(navBtnProperty["non_active_icon"]),
                   activeIcon: Icon(navBtnProperty["active_icon"]),
