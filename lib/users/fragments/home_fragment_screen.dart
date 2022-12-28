@@ -293,7 +293,7 @@ class HomeFragmentScreen extends StatelessWidget {
                                     width: 10,
                                   ),
                                   Text(
-                                    eachBookItemData.price.toString(),
+                                    "\$"+ eachBookItemData.price.toString(),
                                     style: const TextStyle(
                                       color: Colors.purpleAccent,
                                       fontSize: 18,

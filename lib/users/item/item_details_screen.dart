@@ -60,6 +60,11 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: const Text(
+              "Book Details")
+          ),
       backgroundColor: Colors.white,
       body: Stack(
         children: [

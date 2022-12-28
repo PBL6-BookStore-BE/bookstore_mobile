@@ -109,6 +109,7 @@ class ProfileFragmentScreen extends StatelessWidget
   Widget build(BuildContext context) {
     // getUser();
     return ListView(
+
       padding: const EdgeInsets.all(32),
       children: [
 
